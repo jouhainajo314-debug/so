@@ -1,0 +1,270 @@
+html {
+  height: 100%;
+  background: 50% 50% no-repeat
+    url('data:image/svg+xml,<svg viewBox="-20 -5 60 40" width="140" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M1 8l11-7 11 7v8l-11 7-11-7zm0 0l11 8 11-8m0 8L12 8 1 16M12 1v7m0 8v7" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><text x="-12" y="32" font-size="5" font-family="monospace" fill="currentColor">Built on CodePen</text></svg>');
+}
+html {
+  height: 100%;
+  background: 50% 50% no-repeat
+    url('data:image/svg+xml,<svg viewBox="-20 -5 60 40" width="140" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M1 8l11-7 11 7v8l-11 7-11-7zm0 0l11 8 11-8m0 8L12 8 1 16M12 1v7m0 8v7" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><text x="-12" y="32" font-size="5" font-family="monospace" fill="currentColor">Built on CodePen</text></svg>');
+}
+html {
+  height: 100%;
+  background: 50% 50% no-repeat
+    url('data:image/svg+xml,<svg viewBox="-20 -5 60 40" width="140" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M1 8l11-7 11 7v8l-11 7-11-7zm0 0l11 8 11-8m0 8L12 8 1 16M12 1v7m0 8v7" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><text x="-12" y="32" font-size="5" font-family="monospace" fill="currentColor">Built on CodePen</text></svg>');
+}
+:root {
+    --bg-color: #121417;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.6s ease;
+}
+
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.lamp-fixture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+/* --- تصميم القلب الحقيقي الدقيق والمظبوط --- */
+.heart-bulb {
+    position: relative;
+    width: 120px;
+    height: 110px;
+    background-color: #2b2b2b; /* لون المصباح وهو مطفأ */
+    transform: rotate(45deg);
+    border-radius: 20px 20px 0 0;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+    transition: all 0.5s ease;
+}
+
+.heart-bulb::before,
+.heart-bulb::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 110px;
+    background-color: inherit;
+    border-radius: 50% 50% 0 0;
+    transition: all 0.5s ease;
+}
+
+.heart-bulb::before {
+    top: -60px;
+    left: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+.heart-bulb::after {
+    top: -60px;
+    left: 0;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-90deg);
+    transform-origin: 0 100%;
+}
+
+/* خيط المصباح */
+.lamp-cord {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 45px;
+    transition: transform 0.2s ease;
+}
+
+.lamp-fixture:active .lamp-cord {
+    transform: translateY(12px);
+}
+
+.cord-line {
+    width: 2px;
+    height: 50px;
+    background-color: #444;
+}
+
+.cord-ball {
+    width: 14px;
+    height: 14px;
+    background-color: #555;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+/* --- الفراشات المتوهجة (مخفية حتى يشتعل المصباح) --- */
+.butterfly {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff69b4;
+    border-radius: 50% 0 50% 0;
+    box-shadow: 0 0 10px #ff1493;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* أنيميشن حركة ودوران الفراشات */
+@keyframes fly1 {
+    0% { transform: rotate(-45deg) translate(0, 0) scale(0.8); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(360deg) translate(-80px, -90px) scale(1.2); opacity: 0; }
+}
+
+@keyframes fly2 {
+    0% { transform: rotate(-45deg) translate(0, 0) scale(0.6); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(-300deg) translate(90px, -70px) scale(1); opacity: 0; }
+}
+
+@keyframes fly3 {
+    0% { transform: rotate(-45deg) translate(0, 0) scale(0.7); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(250deg) translate(70px, 80px) scale(1.1); opacity: 0; }
+}
+
+/* --- حالة اشتعال المصباح --- */
+body[data-on="1"] {
+    --bg-color: #1a1c23;
+}
+
+body[data-on="1"] .heart-bulb,
+body[data-on="1"] .heart-bulb::before,
+body[data-on="1"] .heart-bulb::after {
+    background-color: #ff69b4;
+    box-shadow: 0 0 50px #ff1493, 0 0 100px #ff69b4, inset 0 0 25px #ffffff;
+}
+
+body[data-on="1"] .cord-ball {
+    background-color: #ff69b4;
+    box-shadow: 0 0 10px #ff69b4;
+}
+
+/* تفعيل الفراشات لتطير وتدور */
+body[data-on="1"] .b1 { animation: fly1 4s infinite ease-in-out; }
+body[data-on="1"] .b2 { animation: fly2 5s infinite ease-in-out 1s; }
+body[data-on="1"] .b3 { animation: fly3 4.5s infinite ease-in-out 0.5s; }
+
+body[data-on="1"] .login-form {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* --- تصميم نافذة تسجيل الدخول الفخمة --- */
+.login-form {
+    width: 280px;
+    background: rgba(25, 27, 34, 0.9);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    border-radius: 18px;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 105, 180, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-25px);
+    transition: all 0.6s ease;
+}
+
+.login-form h2 {
+    color: #ff69b4;
+    font-size: 15px;
+    margin: 0 0 5px 0;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+}
+
+/* زر قوقل */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff;
+    color: #333;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+}
+.google-btn img {
+    width: 16px;
+}
+.google-btn:hover {
+    background: #f0f0f0;
+}
+
+.divider {
+    color: #888;
+    text-align: center;
+    font-size: 11px;
+    margin: -2px 0;
+}
+
+.login-form input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    border-radius: 8px;
+    padding: 9px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+.links-row {
+    display: flex;
+    justify-content: flex-end;
+}
+.links-row a {
+    color: #ff69b4;
+    font-size: 11px;
+    text-decoration: none;
+}
+.links-row a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    background: transparent;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+    padding: 9px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ff69b4;
+    color: #121417;
+    box-shadow: 0 0 15px #ff1493;
+}

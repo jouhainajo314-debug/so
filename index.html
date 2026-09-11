@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجري - تسجيل الدخول</title>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- مصباح القلب -->
+        <div class="lamp-fixture" id="lampFixture" onclick="toggleLamp()">
+            <div class="heart-bulb" id="heartBulb">
+                <div class="butterfly b1"></div>
+                <div class="butterfly b2"></div>
+                <div class="butterfly b3"></div>
+            </div>
+            
+            <div class="lamp-cord">
+                <div class="cord-line"></div>
+                <div class="cord-ball"></div>
+            </div>
+        </div>
+
+        <!-- نافذة تسجيل الدخول / إنشاء حساب -->
+        <div class="login-form" id="loginForm">
+            <h2>إنشاء حساب / تسجيل الدخول</h2>
+            
+            <button class="google-btn" onclick="playClickSound()">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> متابعة باستخدام Google
+            </button>
+            
+            <div class="divider">أو عبر البريد</div>
+
+            <!-- أضفنا IDs هنا باش نقدروا نقراو المعلومات ونخبيوها -->
+            <input type="text" id="username" placeholder="الاسم الكريم">
+            <input type="email" id="useremail" placeholder="البريد الإلكتروني (Email)">
+            <input type="password" id="userpass" placeholder="كلمة المرور (Password)">
+            
+            <div class="links-row">
+                <a href="#" onclick="alert('ساهلة، نسيت كلمة المرور؟ نعاونوك تسترجعها!')">نسيت كلمة المرور؟</a>
+            </div>
+
+            <!-- زر الانتقال للمتجر -->
+            <button class="submit-btn" onclick="handleStoreLogin()">دخول للمتجر</button>
+        </div>
+
+        <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
